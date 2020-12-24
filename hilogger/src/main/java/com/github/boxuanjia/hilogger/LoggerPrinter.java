@@ -73,8 +73,13 @@ class LoggerPrinter implements Printer {
 
     @Override
     public void json(String json) {
+        json(DEBUG, json);
+    }
+
+    @Override
+    public void json(int priority, String json) {
         if (Utils.isEmpty(json)) {
-            d("Empty/Null org.json content");
+            log(priority, json);
             return;
         }
         try {
@@ -82,13 +87,13 @@ class LoggerPrinter implements Printer {
             if (json.startsWith("{")) {
                 JSONObject jsonObject = new JSONObject(json);
                 String message = jsonObject.toString(JSON_INDENT);
-                d(message);
+                log(priority, message);
                 return;
             }
             if (json.startsWith("[")) {
                 JSONArray jsonArray = new JSONArray(json);
                 String message = jsonArray.toString(JSON_INDENT);
-                d(message);
+                log(priority, message);
                 return;
             }
             e("Invalid Json");
@@ -166,5 +171,25 @@ class LoggerPrinter implements Printer {
 
     private String createMessage(String message, Object... args) {
         return args == null || args.length == 0 ? message : String.format(message, args);
+    }
+
+    private void log(int priority, String message) {
+        switch (priority) {
+            case DEBUG:
+                d(message);
+                break;
+            case INFO:
+                i(message);
+                break;
+            case WARN:
+                w(message);
+                break;
+            case ERROR:
+                e(message);
+                break;
+            case FATAL:
+                wtf(message);
+                break;
+        }
     }
 }

@@ -142,4 +142,11 @@ public final class HiLogger {
     public static void json(String json) {
         printer.json(json);
     }
+
+    /**
+     * Formats the given org.json content and print it
+     */
+    public static void json(int priority, String json) {
+        printer.json(priority, json);
+    }
 }

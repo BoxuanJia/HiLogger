@@ -30,6 +30,11 @@ public interface Printer {
      */
     void json(String json);
 
+    /**
+     * Formats the given org.json content and print it
+     */
+    void json(int priority, String json);
+
     void log(int priority, int domain, String tag, String message, Throwable throwable);
 
     void clearLogAdapters();
