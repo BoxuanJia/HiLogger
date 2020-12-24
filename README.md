@@ -1,6 +1,11 @@
 # 此项目仿照[Logger](https://github.com/orhanobut/logger)编写，目的是方便在Harmony上，输出整洁漂亮的打印信息。
 
-暂时只支持json不支持xml，关于LICENSE我不太懂，如果有问题，请及时联系我，我会及时修改。
+关于LICENSE我不太懂，如果有问题，请及时联系我，我会及时修改。
+
+暂时只支持json不支持xml。
+
+因为现在HiLog的DEBUG级别打印，限制必须开启usb调试，而使用华为的远程模拟器开启usb调试会死机～，所以json格式的打印增加了级别选择的支持。
+
 
 ### HiLogger
 Simple, pretty and powerful logger for harmony
@@ -8,7 +13,7 @@ Simple, pretty and powerful logger for harmony
 ### Setup
 Download
 ```groovy
-implementation 'com.github.boxuanjia:hilogger:1.0.0'
+implementation 'com.github.boxuanjia:hilogger:1.0.1'
 ```
 
 Initialize
